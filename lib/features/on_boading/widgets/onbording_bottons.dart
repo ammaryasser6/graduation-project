@@ -7,7 +7,7 @@ class OnbordingBottons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children: [//
         Expanded(
           child: ElevatedButton(
               onPressed:onPressSkip ,
@@ -16,6 +16,7 @@ class OnbordingBottons extends StatelessWidget {
                   minimumSize: WidgetStatePropertyAll(
                       Size(MediaQuery.of(context).size.width, 50))),
               child: const Text(
+                
                 "skip",
                 style: TextStyle(color: Colors.blue),
               )),
