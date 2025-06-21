@@ -1,7 +1,9 @@
+import 'package:final_project/features/login/view/screens/help_screen.dart';
 import 'package:final_project/features/login/view/screens/candidates_screen.dart';
 import 'package:final_project/features/login/view/screens/home_screen.dart';
-import 'package:final_project/features/login/view/screens/login_screen.dart';
-import 'package:final_project/features/register/view/register_screen.dart';
+import 'package:final_project/features/auth/login/login_screen.dart';
+import 'package:final_project/features/login/view/screens/vote_result_screen.dart';
+import 'package:final_project/features/auth/register/view/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class LayoutScreen extends StatefulWidget {
@@ -16,12 +18,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
   List screens = [
     HomeScreen(),
     TypeElectionScreen(),
-    Container(
-      color: Colors.red,
-    ),
-    Container(
-      color: Colors.yellow,
-    ),
+    HelpScreen(),
+    VotingResultsScreen(),
+    
   ];
 
   @override
@@ -30,7 +29,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
       body: screens[selectedindex],
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black12,
-          unselectedItemColor: Colors.deepPurpleAccent,
+          unselectedItemColor: Colors.blue,
           backgroundColor: Colors.white,
           type: BottomNavigationBarType.fixed,
           currentIndex: selectedindex,
@@ -41,19 +40,18 @@ class _LayoutScreenState extends State<LayoutScreen> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "home",
+              icon: Icon(Icons.home_filled),
+              label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.login),
-              label: "type election",
+              icon: Icon(Icons.how_to_vote),
+              label: "Elections",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: "About",
-            ),
+                icon: Icon(Icons.help_outline), label: "Help"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.note_alt_outlined), label: "Help"),
+                icon: Icon(Icons.bar_chart), label: "Voting Result"),
+            
           ]),
     );
   }

@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:final_project/features/login/view/screens/people_assembly.dart';
 import 'package:final_project/features/login/view/screens/presidental_candidates.dart';
 import 'package:final_project/features/login/view/screens/senete_candidates_screen.dart';
-import 'package:flutter/material.dart';
 
 class TypeElectionScreen extends StatelessWidget {
   const TypeElectionScreen({super.key});
@@ -8,146 +9,114 @@ class TypeElectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
+    return Scaffold(
+      // appBar: AppBar(
+      //   title: const Text(" Election Type",
+      //       style: TextStyle(fontWeight: FontWeight.bold)),
+      //   centerTitle: true,
+      //   backgroundColor: Colors.blueAccent,
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back, color: Colors.white),
+      //     onPressed: () => Navigator.pop(context),
+      //   ),
+      //   shape: const RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+      //   ),
+      // ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.blue, Colors.blue, Colors.white]),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Padding(
+            colors: [Colors.blue, Colors.white],
+          ),
+        ),
+        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           child: ListView(
             children: [
+              SizedBox(height: 20),
               Align(
                 alignment: Alignment.center,
+                child: const Text(
+                  " Election Type",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              const Align(
+                alignment: Alignment.center,
                 child: Text(
-                  "Chose the type of electoins:",
+                  "Choose the type of elections:",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(
-                height: 50,
+              const SizedBox(height: 30),
+              _buildElectionCard(
+                context,
+                "Presidential Elections",
+                "assets/images/politic.png",
+                () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PresidentalCandidates())),
               ),
-            
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Colors.white, Colors.blue, Colors.blue]),
-                ),
-                child: Column(
-
-                    
-                  children: [
-                    Text(
-                      "presedintal elections",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Image.asset(
-                      "assets/images/politic.png",
-                      height: size.height * 0.30,
-                      width: size.width * 0.75,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PresidentalCandidates(),
-                            ));
-                      },
-                      child: Text(
-                        "Starts now",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(Colors.blue)),
-                    )
-                  ],
-                ),
+              const SizedBox(height: 15),
+              _buildElectionCard(
+                context,
+                "Senate Elections",
+                "assets/images/receptionist.png",
+                () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SeneteCandidatesScreen())),
               ),
-              SizedBox(
-                height: 15,
+              const SizedBox(height: 15),
+              _buildElectionCard(
+                context,
+                "People's Assembly",
+                "assets/images/candidates.png",
+                () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PeopleAssembly())),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SeneteCandidatesScreen(),
-                      ));
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Colors.white, Colors.blue, Colors.blue]),
-                  ),
-                  child: Column(children: [
-                    Text(
-                      "Senate elections",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Image.asset(
-                      "assets/images/receptionist.png",
-                      height: size.height * 0.30,
-                      width: size.width * 0.75,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    SeneteCandidatesScreen()));
-                      },
-                      child: Text(
-                        "Starts now",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                              const Color.fromARGB(255, 6, 89, 156))),
-                    )
-                  ]),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Colors.white, Colors.blue, Colors.blue]),
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      "People's Assembly",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Image.asset("assets/images/candidates.png"),
-                    ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Starts now",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        style: ButtonStyle(
-                            backgroundColor:
-                                WidgetStatePropertyAll(Colors.white)))
-                  ],
-                ),
-              )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildElectionCard(BuildContext context, String title,
+      String imagePath, VoidCallback onTap) {
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            Text(title,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            const SizedBox(height: 10),
+            Image.asset(imagePath, height: 150, width: 150),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: onTap,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+              ),
+              child: const Text("Start Now",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white)),
+            ),
+          ],
         ),
       ),
     );

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PresidntedItem extends StatelessWidget {
-  PresidntedItem({super.key, required this.images,required this.name});
+  PresidntedItem({super.key, required this.images, required this.name,this.onTap});
   String images;
   String name;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +14,7 @@ class PresidntedItem extends StatelessWidget {
             horizontal: 20,
             vertical: 15,
           ),
-          color: Colors.white,
+          color: const Color.fromARGB(0, 255, 255, 255),
           child: Column(
             children: [
               Image.asset(
@@ -36,7 +37,7 @@ class PresidntedItem extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: onTap,
           child: Text(
             "veiw details",
             style: TextStyle(color: Colors.white),

@@ -1,6 +1,7 @@
 import 'package:final_project/features/login/view/screens/home_screen.dart';
 import 'package:final_project/features/on_boading/widgets/onbording_bottons.dart';
 import 'package:final_project/features/on_boading/widgets/onbording_item.dart';
+import 'package:final_project/features/auth/register/view/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnBordingScreen extends StatelessWidget {
@@ -27,11 +28,27 @@ class OnBordingScreen extends StatelessWidget {
             ),
             OnbordingBottons(
               onPressNext: () {
-                controller.nextPage(
-                    duration: Duration(microseconds: 100),
-                    curve: Curves.linear);
+                if ((OnBordinhModel.ListOfOnBordingData.length - 1) ==
+                    controller.page?.toInt()) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterScreen(),
+                      ));
+                } else {
+                  controller.nextPage(
+                      duration: Duration(microseconds: 100),
+                      curve: Curves.linear);
+                }
               },
-              onPressSkip: () => HomeScreen,
+              onPressSkip:() {
+                Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterScreen(),
+                      ));
+
+              },
             ),
             SizedBox(
               height: 20,
